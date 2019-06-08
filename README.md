@@ -5,7 +5,7 @@
 ###### Content :
 
 - [02.1 Creating Loopback Interface in Ubuntu](#02.1)
-- [02.2 Router Configuration](#02-2)
+- [02.2 Router Configuration](#02.2)
 - [02.3 Router Telnet Configuration](#02.3)
 
 - [03.1 Cisco IOS Command Line Modes](#03.1)
@@ -44,7 +44,7 @@ $ sudo tunctl -d tap0
 Set 'tap0' nonpersistent
 ```
 
-##### 02.2 Router Configuration {#02-2}
+##### 02.2 Router Configuration {#02.2}
 
 ```
 R3# conf t
