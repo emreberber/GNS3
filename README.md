@@ -4,7 +4,7 @@
 
 ###### Content :
 
-- [02.1 Creating Loopback Interface in Ubuntu](#02.1-Creating-Loopback-Interface-in-Ubuntu)
+- [02.1 Creating Loopback Interface in Ubuntu](#02.1)
 - [02.2 Router Configuration](#02.2)
 - [02.3 Router Telnet Configuration](#02.3)
 
