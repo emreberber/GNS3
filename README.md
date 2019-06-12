@@ -3,7 +3,7 @@
  <img width=200px height=200px src="gns3-logo.png" alt="gns3-logo"></a>
 </p>
 
-<h3 align="center">Nginx Notes</h3>
+<h3 align="center">GNS3 Notes</h3>
 
 <div align="center">
 
