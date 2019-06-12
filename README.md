@@ -1,21 +1,50 @@
-## GNS3 Notes
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="gns3-logo.png" alt="gns3-logo"></a>
+</p>
 
-<img src="gns3-logo.png" alt="gns3-logo">
+<h3 align="center">Nginx Notes</h3>
 
-###### Content :
+<div align="center">
 
-- [02.1 Creating Loopback Interface in Ubuntu](#02.1)
-- [02.2 Router Configuration](#02.2)
-- [02.3 Router Telnet Configuration](#02.3)
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-- [03.1 Cisco IOS Command Line Modes](#03.1)
-- [03.2 Basic Router Configuration](#03.2)
+</div>
 
-- [04.1 Router SSH Configuration](#04.1)
+---
 
-<hr>
+<p align="center"> useful notes for GNS3
+    <br> 
+</p>
 
-##### 02.1 Creating Loopback Interface in Ubuntu {#02.1}
+### 📝 Table of Contents
+- [What is GNS3 ?](#what_is_gns3)
+- [Installing](#installing)
+- [02.1 Creating Loopback Interface in Ubuntu](#creating_lo_in_ubuntu)
+- [02.2 Router Configuration](#router_configuration)
+- [02.3 Router Telnet Configuration](#router_telnet_configuration)
+- [03.1 Cisco IOS Command Line Modes](#cisco_ios_command_line_modes)
+- [03.2 Basic Router Configuration](#basic_router_configuration)
+- [04.1 Router SSH Configuration](#router_ssh_configuration)
+
+- [Solutions](#solutions)
+- [Author](#author)
+- [Useful Links](#useful_links)
+
+### 🤔 What is GNS3 ? <a name = "what_is_gns3"></a>
+GNS3 is used by hundreds of thousands of network engineers worldwide to emulate, configure, test and troubleshoot virtual and real networks. GNS3 allows you to run a small topology consisting of only a few devices on your laptop, to those that have many devices hosted on multiple servers or even hosted in the cloud.
+
+
+### 🧐 Installing <a name = "installing"></a>
+
+```
+sudo add-apt-repository ppa:gns3/ppa
+sudo apt-get update
+sudo apt-get install gns3-gui
+```
+
+### # 02.1 Creating Loopback Interface in Ubuntu <a name = "creating_lo_in_ubuntu"></a>
 
 ```
 $ sudo apt install uml-utilities
@@ -33,7 +62,6 @@ tap0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
         TX packets 0  bytes 0 (0.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
-
 # set default gateway address for tap network
 $ sudo ip route add default via 192.168.2.1 dev tap0
 
@@ -46,15 +74,13 @@ $ sudo tunctl -d tap0
 Set 'tap0' nonpersistent
 ```
 
-##### 02.2 Router Configuration {#02.2}
+### # 02.2 Router Configuration <a name = "router_configuration"></a>
 
 ```
 R3# conf t
 R3(config)# interface fastEthernet 0/0
 R3(config-if)# ip address 192.168.2.1 255.255.255.0
 R3(config-if)# no sh
-
-
 *Jun  7 00:30:28.379: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
 *Jun  7 00:30:29.379: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
 
@@ -71,8 +97,9 @@ Sending 5, 100-byte ICMP Echos to 192.168.2.10, timeout is 2 seconds:
 Success rate is 80 percent (4/5), round-trip min/avg/max = 8/11/16 ms
 ```
 
-##### 02.3 Router Telnet Configuration {#02.3}
+### # 02.3 Router Telnet Configuration <a name = "router_telnet_configuration"></a>
 
+> Set Password
 ```
 R1# conf t
 R1(config)# line vty 0 4
@@ -82,6 +109,7 @@ R1(config-line)# exit
 R1(config)# enable secret 5678
 ```
 
+> Connection
 ```
 $ telnet 192.168.2.1
 Trying 192.168.2.1...
@@ -99,7 +127,8 @@ Password: (5678)
 R1#
 ```
 
-##### 03.1 Cisco IOS Command Line Modes {#03.1}
+
+### # 03.1 Cisco IOS Command Line Modes <a name = "cisco_ios_command_line_modes"></a>
 
 ```
 1.User Mode
@@ -159,7 +188,7 @@ Router(config-if)#end
 Router#
 ```
 
-##### 03.2 Basic Router Configuration {#03.2}
+### # 03.2 Basic Router Configuration <a name = "basic_router_configuration"></a>
 
 ```
 R1#disable
@@ -216,11 +245,7 @@ Escape character is '^]'.
 Welcome Emre Berber's Router
 
 
-
-
 User Access Verification
-
-
 
 
 Password: (1357)
@@ -240,12 +265,8 @@ MyRouter#clock ?
   update-calendar  Update the hardware calendar from the clock
 
 
-
-
 MyRouter#clock set ?
   hh:mm:ss  Current Time
-
-
 
 
 MyRouter#clock set 03:14:30 ?
@@ -253,12 +274,8 @@ MyRouter#clock set 03:14:30 ?
   MONTH   Month of the year
 
 
-
-
 MyRouter#clock set 03:14:30 08 jun 2019 
 MyRouter#
-
-
 
 
 MyRouter#show clock
@@ -268,8 +285,6 @@ MyRouter#show clock
 ```
 R1#show running-config 
 Building configuration...
-
-
 
 
 Current configuration : 1554 bytes
@@ -402,7 +417,6 @@ line vty 0 4
 !         
 end       
 
-
           
 R1#conf t
 R1(config)#service password-encryption 
@@ -411,8 +425,6 @@ R1(config)#service password-encryption
 # show running-config run on config mode
 R1(config)#do show running-config 
 Building configuration...
-
-
 
 
 Current configuration : 1567 bytes
@@ -559,7 +571,6 @@ Building configuration...
 R1#
 ```
 
-
 ```
 R1#show ip interface 
 FastEthernet0/0 is up, line protocol is up
@@ -612,7 +623,7 @@ Serial2/3 is administratively down, line protocol is down
 R1#
 ```
 
-##### 04.1 Router SSH Configuration {#04.1}
+### # 04.1 Router SSH Configuration <a name = "router_ssh_configuration"></a>
 
 ```
 R1#conf t
@@ -638,8 +649,6 @@ Choose the size of the key modulus in the range of 360 to 4096 for your
   a few minutes.
 
 
-
-
 How many bits in the modulus [512]: 1024
 % Generating 1024 bit RSA keys, keys will be non-exportable...
 [OK] (elapsed time was 2 seconds)
@@ -647,8 +656,6 @@ How many bits in the modulus [512]: 1024
 
 MyRouter(config)#username emre password 1234
 MyRouter(config)#enable password en1234
-
-
 
 
 MyRouter(config)#line vty 0 4 
@@ -666,7 +673,6 @@ Building configuration...
 MyRouter#
 ```
 
-- * https://ma.ttias.be/ssh-error-unable-negotiate-ip-no-matching-cipher-found/
 
 ```
 $ ssh -c aes256-cbc emre@192.168.2.1
@@ -694,12 +700,8 @@ Connection Version Mode Encryption  Hmac     State                   Username
 %No SSHv1 server connections running.
 
 
-
-
 MyRouter#show running-config 
 Building configuration...
-
-
 
 
 Current configuration : 1689 bytes
@@ -836,3 +838,20 @@ line vty 0 4
 !         
 end   
 ```
+
+
+### ☺ Solutions <a name="solutions">
+- https://ma.ttias.be/ssh-error-unable-negotiate-ip-no-matching-cipher-found/
+
+### ✍️ Author <a name = "author"></a>
+<div align="left">
+
+[![Status](https://img.shields.io/badge/github-emreberber-lightgrey.svg)]() 
+[![Status](https://img.shields.io/badge/twitter-emreberber07-blue.svg)]() 
+
+</div>
+
+## :link: Useful Links <a name = "useful_links"></a>
+-  
+-
+-
