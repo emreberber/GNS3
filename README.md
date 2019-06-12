@@ -840,7 +840,7 @@ end
 ```
 
 
-### ☺ Solutions <a name="solutions">
+### 😍 Solutions <a name="solutions">
 - https://ma.ttias.be/ssh-error-unable-negotiate-ip-no-matching-cipher-found/
 
 ### ✍️ Author <a name = "author"></a>
